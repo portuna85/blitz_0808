@@ -1,0 +1,63 @@
+package com.playforum.springboot.service;
+
+import com.playforum.springboot.domain.comment.Comment;
+import com.playforum.springboot.domain.posts.Posts;
+import com.playforum.springboot.domain.user.User;
+import com.playforum.springboot.repository.CommentRepository;
+import com.playforum.springboot.repository.PostsRepository;
+import com.playforum.springboot.repository.UserRepository;
+import com.playforum.springboot.service.dto.CommentDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RequiredArgsConstructor
+@Service
+public class CommentService {
+
+    private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
+    private final PostsRepository postsRepository;
+
+    @Transactional
+    public Long save(Long id, String nickname, CommentDto.Request dto) {
+        User user = userRepository.findByNickname(nickname);
+        Posts posts = postsRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다. " + id));
+
+        dto.setUser(user);
+        dto.setPosts(posts);
+
+        Comment comment = dto.toEntity();
+        commentRepository.save(comment);
+
+        return comment.getId();
+    }
+
+    @Transactional(readOnly = true)
+    public List<CommentDto.Response> findAll(Long id) {
+        Posts posts = postsRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
+        List<Comment> comments = posts.getComments();
+        return comments.stream().map(CommentDto.Response::new).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void update(Long id, CommentDto.Request dto) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 댓글이 존재하지 않습니다. " + id));
+
+        comment.update(dto.getComment());
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 댓글이 존재하지 않습니다. id=" + id));
+
+        commentRepository.delete(comment);
+    }
+}

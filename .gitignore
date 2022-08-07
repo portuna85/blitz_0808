@@ -4,6 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+application-oauth.properties
+application-real-db.yml
 
 ### STS ###
 .apt_generated

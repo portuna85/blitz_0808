@@ -24,7 +24,6 @@ public class PostsDto {
         private int view;
         private User user;
 
-        /* Dto -> Entity */
         public Posts toEntity() {
             Posts posts = Posts.builder()
                     .id(id)

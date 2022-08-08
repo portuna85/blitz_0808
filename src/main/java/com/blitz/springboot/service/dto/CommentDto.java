@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class CommentDto {
 
-    /** 댓글 Service 요청을 위한 DTO 클래스 */
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -56,7 +55,7 @@ public class CommentDto {
         private String nickname;
         private Long userId;
         private Long postsId;
-        /* Entity -> Dto*/
+
         public Response(Comment comment) {
             this.id = comment.getId();
             this.comment = comment.getComment();

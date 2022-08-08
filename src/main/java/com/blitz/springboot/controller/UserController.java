@@ -22,9 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Map;
 
-/**
- * 회원 관련 Controller
- */
 @RequiredArgsConstructor
 @Controller
 public class UserController {

@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * REST API Controller
- */
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @RestController

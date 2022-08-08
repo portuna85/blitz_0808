@@ -7,7 +7,6 @@ import com.blitz.springboot.service.dto.PostsDto;
 import com.blitz.springboot.service.dto.UserDto;
 import com.blitz.springboot.service.security.auth.LoginUser;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class PostsIndexController {
@@ -107,3 +105,4 @@ public class PostsIndexController {
         return "posts/posts-search";
     }
 }
+

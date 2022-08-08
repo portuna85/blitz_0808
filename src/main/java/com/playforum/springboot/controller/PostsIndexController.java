@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-
 /**
  * 화면 연결 Controller
  */
@@ -62,7 +61,6 @@ public class PostsIndexController {
     public String read(@PathVariable Long id, @LoginUser UserDto.Response user, Model model) {
         PostsDto.Response dto = postsService.findById(id);
         List<CommentDto.Response> comments = dto.getComments();
-
 
         /* 댓글 관련 */
         if (comments != null && !comments.isEmpty()) {

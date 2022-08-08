@@ -68,7 +68,7 @@ public class PostsIndexController {
             }
 
             if (comments.stream().anyMatch(s -> s.getUserId().equals(user.getId()))) {
-                model.addAttribute("isWriter", false);
+                model.addAttribute("isWriter", true);
             }
         }
 

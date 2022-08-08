@@ -2,29 +2,22 @@ const main = {
     init : function() {
         const _this = this;
 
-        // 게시글 저장
         $('#btn-save').on('click', function () {
             _this.save();
         });
-        // 게시글 수정
         $('#btn-update').on('click', function () {
             _this.update();
         });
-        // 게시글 삭제
         $('#btn-delete').on('click', function () {
             _this.delete();
         });
-
-        // 회원 수정
         $('#btn-user-modify').on('click', function () {
             _this.userModify();
         });
 
-        // 댓글 저장
         $('#btn-comment-save').on('click', function () {
             _this.commentSave();
         });
-        // 댓글 수정
         document.querySelectorAll('#btn-comment-update').forEach(function (item) {
             item.addEventListener('click', function () { // 버튼 클릭 이벤트 발생시
                 const form = this.closest('form'); // btn의 가장 가까운 조상의 Element(form)를 반환 (closest)

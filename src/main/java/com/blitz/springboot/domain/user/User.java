@@ -21,7 +21,7 @@ public class User extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false, length = 30, unique = true)
-    private String username; // 아이디
+    private String username;
 
     @Column(nullable = false, unique = true)
     private String nickname;
@@ -36,7 +36,6 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
-    /* 회원정보 수정 */
     public void modify(String nickname, String password) {
         this.nickname = nickname;
         this.password = password;

@@ -16,9 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-/**
- * Security 설정 클래스
- */
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity

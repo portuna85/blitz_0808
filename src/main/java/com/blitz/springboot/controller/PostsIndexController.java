@@ -24,7 +24,7 @@ public class PostsIndexController {
 
     private final PostsService postsService;
 
-    @GetMapping("/")                 /* default page = 0, size = 10  */
+    @GetMapping("/")
     public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC)
     Pageable pageable, @LoginUser UserDto.Response user) {
         Page<Posts> list = postsService.pageList(pageable);

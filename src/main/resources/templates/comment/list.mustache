@@ -4,7 +4,6 @@
     {{! 댓글내용 부분 }}
     <ul class="list-group-flush">
         {{#comments}}
-            {{#user}}
             <li id="comments-{{id}}" class="list-group-item">
                 <span>
                     <span style="font-size: small">{{nickname}}</span>
@@ -31,7 +30,6 @@
                     <button type="button" id="btn-comment-update" class="btn btn-outline-primary bi bi-pencil-square"> 수정</button>
                 </form>
             </li>
-            {{/user}}
         {{/comments}}
     </ul>
 </div>

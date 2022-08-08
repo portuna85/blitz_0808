@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
-
 @RequiredArgsConstructor
 @RestController
 public class ProfileController {

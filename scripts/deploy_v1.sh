@@ -23,11 +23,11 @@ cd $REPOSITORY
 
 echo "> Build 파일 복사"
 
-cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
+cp $REPOSITORY/$PROJECT_NAME/build/libs/*.war $REPOSITORY/
 
 echo "> 현재 구동중인 PID 확인"
 
-CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.jar)
+CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.war)
 
 echo "> 현재구동중인 애플리케이션 PID : $CURRENT_PID"
 
@@ -41,7 +41,7 @@ fi
 
 echo "> 새 애플리케이션 배포"
 
-JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/ | grep war | tail -n 1)
 
 echo "> JAR name : $JAR_NAME"
 

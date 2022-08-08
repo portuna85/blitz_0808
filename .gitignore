@@ -5,6 +5,7 @@ build/
 !**/src/main/**
 !**/src/test/**
 /src/test
+/.note/
 application-oauth.properties
 application-real-db.properties
 

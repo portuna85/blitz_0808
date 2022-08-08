@@ -35,7 +35,6 @@ public class UserDto {
 
         private Role role;
 
-        /* DTO -> Entity */
         public User toEntity() {
             User user = User.builder()
                     .id(id)

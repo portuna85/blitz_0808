@@ -54,7 +54,6 @@ public class PostsDto {
         private final Long userId;
         private final List<CommentDto.Response> comments;
 
-        /* Entity -> Dto*/
         public Response(Posts posts) {
             this.id = posts.getId();
             this.title = posts.getTitle();

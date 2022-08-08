@@ -1,0 +1,1 @@
+ Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.samskivert.mustache.MustacheException$Context: No method or field with name 'user.id' on line 15] with root cause

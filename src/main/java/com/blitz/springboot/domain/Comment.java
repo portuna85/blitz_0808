@@ -1,7 +1,5 @@
-package com.blitz.springboot.domain.comment;
+package com.blitz.springboot.domain;
 
-import com.blitz.springboot.domain.posts.Posts;
-import com.blitz.springboot.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +19,6 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
     private Long id;
 
     @Column(columnDefinition = "TEXT", nullable = false)
@@ -41,7 +38,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user; // 작성자
 
     /* 댓글 수정 */
     public void update(String comment) {

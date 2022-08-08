@@ -1,12 +1,13 @@
 package com.blitz.springboot.controller;
 
-import com.blitz.springboot.domain.posts.Posts;
+import com.blitz.springboot.domain.Posts;
 import com.blitz.springboot.service.PostsService;
 import com.blitz.springboot.service.dto.CommentDto;
 import com.blitz.springboot.service.dto.PostsDto;
 import com.blitz.springboot.service.dto.UserDto;
 import com.blitz.springboot.service.security.auth.LoginUser;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,9 +25,9 @@ public class PostsIndexController {
 
     private final PostsService postsService;
 
-    @GetMapping("/")
+    @GetMapping("/")                 /* default page = 0, size = 10  */
     public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC)
-    Pageable pageable, @LoginUser UserDto.Response user) {
+            Pageable pageable, @LoginUser UserDto.Response user) {
         Page<Posts> list = postsService.pageList(pageable);
 
         if (user != null) {
@@ -41,7 +42,7 @@ public class PostsIndexController {
 
         return "index";
     }
-
+    /* 글 작성 */
     @GetMapping("/posts/write")
     public String write(@LoginUser UserDto.Response user, Model model) {
         if (user != null) {
@@ -50,22 +51,28 @@ public class PostsIndexController {
         return "posts/posts-write";
     }
 
+    /* 글 상세보기 */
     @GetMapping("/posts/read/{id}")
     public String read(@PathVariable Long id, @LoginUser UserDto.Response user, Model model) {
         PostsDto.Response dto = postsService.findById(id);
         List<CommentDto.Response> comments = dto.getComments();
 
+
+        /* 댓글 관련 */
         if (comments != null && !comments.isEmpty()) {
             model.addAttribute("comments", comments);
         }
 
+        /* 사용자 관련 */
         if (user != null) {
             model.addAttribute("user", user);
 
+            /* 게시글 작성자 본인인지 확인 */
             if (dto.getUserId().equals(user.getId())) {
                 model.addAttribute("writer", true);
             }
 
+            /* 댓글 작성자 본인인지 확인 */
             if (comments.stream().anyMatch(s -> s.getUserId().equals(user.getId()))) {
                 model.addAttribute("isWriter", true);
             }
@@ -89,7 +96,7 @@ public class PostsIndexController {
 
     @GetMapping("/posts/search")
     public String search(String keyword, Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC)
-    Pageable pageable, @LoginUser UserDto.Response user) {
+            Pageable pageable, @LoginUser UserDto.Response user) {
         Page<Posts> searchList = postsService.search(keyword, pageable);
 
         if (user != null) {

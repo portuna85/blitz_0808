@@ -1,6 +1,6 @@
 package com.blitz.springboot.service;
 
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.User;
 import com.blitz.springboot.repository.UserRepository;
 import com.blitz.springboot.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;

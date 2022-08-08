@@ -1,6 +1,6 @@
 package com.blitz.springboot.service.security.auth;
 
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

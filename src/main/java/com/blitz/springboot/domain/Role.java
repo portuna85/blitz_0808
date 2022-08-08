@@ -1,4 +1,4 @@
-package com.blitz.springboot.domain.user;
+package com.blitz.springboot.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.blitz.springboot.service;
 
-import com.blitz.springboot.domain.posts.Posts;
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.Posts;
+import com.blitz.springboot.domain.User;
 import com.blitz.springboot.repository.PostsRepository;
 import com.blitz.springboot.repository.UserRepository;
 import com.blitz.springboot.service.dto.PostsDto;
@@ -82,3 +82,4 @@ public class PostsService {
         return postsList;
     }
 }
+

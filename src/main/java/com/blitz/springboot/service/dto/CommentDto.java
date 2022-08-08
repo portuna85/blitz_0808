@@ -1,8 +1,9 @@
 package com.blitz.springboot.service.dto;
 
-import com.blitz.springboot.domain.comment.Comment;
-import com.blitz.springboot.domain.posts.Posts;
-import com.blitz.springboot.domain.user.User;
+
+import com.blitz.springboot.domain.Comment;
+import com.blitz.springboot.domain.Posts;
+import com.blitz.springboot.domain.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -25,10 +26,7 @@ public class CommentDto {
         private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
         private User user;
         private Posts posts;
-
-        /**
-         *  Dto -> Entity
-         */
+        /* Dto -> Entity */
         public Comment toEntity() {
             Comment comments = Comment.builder()
                     .id(id)
@@ -58,10 +56,7 @@ public class CommentDto {
         private String nickname;
         private Long userId;
         private Long postsId;
-
-        /**
-         *  Entity -> Dto
-         */
+        /* Entity -> Dto*/
         public Response(Comment comment) {
             this.id = comment.getId();
             this.comment = comment.getComment();

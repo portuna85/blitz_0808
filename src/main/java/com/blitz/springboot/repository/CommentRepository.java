@@ -1,7 +1,7 @@
 package com.blitz.springboot.repository;
 
-import com.blitz.springboot.domain.comment.Comment;
-import com.blitz.springboot.domain.posts.Posts;
+import com.blitz.springboot.domain.Comment;
+import com.blitz.springboot.domain.Posts;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

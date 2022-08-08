@@ -1,19 +1,15 @@
 package com.blitz.springboot.service.dto;
 
-import com.blitz.springboot.domain.posts.Posts;
-import com.blitz.springboot.domain.user.User;
+
+import com.blitz.springboot.domain.Posts;
+import com.blitz.springboot.domain.User;
 import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * request, response DTO 클래스를 하나로 묶어 InnerStaticClass로 한 번에 관리
- */
 public class PostsDto {
 
-
-    /** 게시글의 등록과 수정을 처리할 요청(Request) 클래스 */
     @Data
     @AllArgsConstructor
     @NoArgsConstructor

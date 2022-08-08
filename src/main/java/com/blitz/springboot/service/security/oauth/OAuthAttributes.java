@@ -1,7 +1,7 @@
 package com.blitz.springboot.service.security.oauth;
 
-import com.blitz.springboot.domain.user.Role;
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.Role;
+import com.blitz.springboot.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -49,7 +49,6 @@ public class OAuthAttributes {
     }
 
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
-        /* JSON형태이기 때문에 Map을 통해 데이터를 가져온다. */
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
         log.info("naver response : " + response);

@@ -1,6 +1,6 @@
 package com.blitz.springboot.service.security.auth;
 
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.User;
 import com.blitz.springboot.repository.UserRepository;
 import com.blitz.springboot.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Security User Service
- */
 @RequiredArgsConstructor
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

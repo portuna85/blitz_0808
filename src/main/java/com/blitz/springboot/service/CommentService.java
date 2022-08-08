@@ -1,8 +1,8 @@
 package com.blitz.springboot.service;
 
-import com.blitz.springboot.domain.comment.Comment;
-import com.blitz.springboot.domain.posts.Posts;
-import com.blitz.springboot.domain.user.User;
+import com.blitz.springboot.domain.Comment;
+import com.blitz.springboot.domain.Posts;
+import com.blitz.springboot.domain.User;
 import com.blitz.springboot.repository.CommentRepository;
 import com.blitz.springboot.repository.PostsRepository;
 import com.blitz.springboot.repository.UserRepository;
@@ -22,6 +22,7 @@ public class CommentService {
     private final UserRepository userRepository;
     private final PostsRepository postsRepository;
 
+    /* CREATE */
     @Transactional
     public Long save(Long id, String nickname, CommentDto.Request dto) {
         User user = userRepository.findByNickname(nickname);
@@ -37,6 +38,7 @@ public class CommentService {
         return comment.getId();
     }
 
+    /* READ */
     @Transactional(readOnly = true)
     public List<CommentDto.Response> findAll(Long id) {
         Posts posts = postsRepository.findById(id).orElseThrow(() ->
@@ -45,6 +47,7 @@ public class CommentService {
         return comments.stream().map(CommentDto.Response::new).collect(Collectors.toList());
     }
 
+    /* UPDATE */
     @Transactional
     public void update(Long id, CommentDto.Request dto) {
         Comment comment = commentRepository.findById(id).orElseThrow(() ->
@@ -53,6 +56,7 @@ public class CommentService {
         comment.update(dto.getComment());
     }
 
+    /* DELETE */
     @Transactional
     public void delete(Long id) {
         Comment comment = commentRepository.findById(id).orElseThrow(() ->

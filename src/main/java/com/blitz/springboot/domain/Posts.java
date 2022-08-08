@@ -1,12 +1,6 @@
-package com.blitz.springboot.domain.posts;
+package com.blitz.springboot.domain;
 
-import com.blitz.springboot.domain.BaseTimeEntity;
-import com.blitz.springboot.domain.comment.Comment;
-import com.blitz.springboot.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,7 +14,6 @@ public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_id")
     private Long id;
 
     @Column(length = 500, nullable = false)

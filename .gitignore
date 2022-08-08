@@ -1,11 +1,12 @@
 HELP.md
 .gradle
 build/
+.note/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
 /src/test
-/.note/
+
 application-oauth.properties
 application-real-db.properties
 

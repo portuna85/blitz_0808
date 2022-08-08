@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Map;
 
+/**
+ * 회원 관련 Controller
+ */
 @RequiredArgsConstructor
 @Controller
 public class UserController {
@@ -32,9 +35,7 @@ public class UserController {
     private final CustomValidators.NicknameValidator NicknameValidator;
     private final CustomValidators.UsernameValidator UsernameValidator;
 
-    /**
-     *  커스텀 유효성 검증을 위해 추가
-     */
+    /* 커스텀 유효성 검증을 위해 추가 */
     @InitBinder
     public void validatorBinder(WebDataBinder binder) {
         binder.addValidators(EmailValidator);
@@ -44,20 +45,23 @@ public class UserController {
 
     @GetMapping("/auth/join")
     public String join() {
-        return "user/user-join";
+        return "/user/user-join";
     }
 
+    /* 회원가입 */
     @PostMapping("/auth/joinProc")
     public String joinProc(@Valid UserDto.Request dto, Errors errors, Model model) {
         if (errors.hasErrors()) {
+             /* 회원가입 실패시 입력 데이터 값을 유지 */
             model.addAttribute("userDto", dto);
 
+            /* 유효성 통과 못한 필드와 메시지를 핸들링 */
             Map<String, String> validatorResult = userService.validateHandling(errors);
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
-
-            return "user/user-join";
+            /* 회원가입 페이지로 다시 리턴 */
+            return "/user/user-join";
         }
         userService.userJoin(dto);
         return "redirect:/auth/login";
@@ -69,9 +73,10 @@ public class UserController {
                         Model model) {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
-        return "user/user-login";
+        return "/user/user-login";
     }
 
+    /* Security에서 로그아웃은 기본적으로 POST지만, GET으로 우회 */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -82,11 +87,12 @@ public class UserController {
         return "redirect:/";
     }
 
+    /* 회원정보 수정 */
     @GetMapping("/modify")
     public String modify(@LoginUser UserDto.Response user, Model model) {
         if (user != null) {
             model.addAttribute("user", user);
         }
-        return "user/user-modify";
+        return "/user/user-modify";
     }
 }

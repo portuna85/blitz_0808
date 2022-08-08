@@ -21,7 +21,7 @@ public class PostsApiController {
     }
 
     @GetMapping("/posts/{id}")
-    public ResponseEntity read(@PathVariable Long id) {
+    public ResponseEntity read(@PathVariable("id") Long id) {
         return ResponseEntity.ok(postsService.findById(id));
     }
 
